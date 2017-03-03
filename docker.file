@@ -1,0 +1,15 @@
+FROM ubuntu:14.04
+
+MAINTAINER "Luiz Eduardo Araujo" luiz@luizearaujo.com
+
+USER root
+
+RUN add-apt-repository -y ppa:ethereum/ethereum -y
+RUN apt-get update -y
+RUN apt-get install ethereum -y
+RUN apt-get install nodejs -y
+RUN npm install -g geth-private
+
+EXPOSE 8545
+
+CMD geth-private --autoMine
